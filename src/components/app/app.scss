@@ -1,0 +1,22 @@
+#map {
+  width: 300px;
+  height: 300px;
+}
+
+body {
+  background-image: url("bg 1.png");
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  color: #FFFFFF;
+}
+
+.wrapper {
+  background: linear-gradient(180deg, rgba(8, 15, 26, 0.59) 0%, rgba(17, 17, 46, 0.46) 100%);
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
