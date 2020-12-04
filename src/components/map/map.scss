@@ -1,0 +1,30 @@
+.map__city {
+
+}
+
+#map {
+  position: absolute;
+  top: 235px;
+  left: 975px;
+  width: 320px;
+  height: 320px;
+  border-radius: 25px;
+}
+
+.map {
+  position: absolute;
+  width: 300px;
+  left: 975px;
+  top: 570px;
+}
+
+.map p {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: right;
+  text-transform: capitalize;
+  margin: 0;
+}
