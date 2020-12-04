@@ -16,11 +16,11 @@ export default class Map extends Component {
         latitude: latitude.toFixed(2).replace(/\./g, "°") + "'",
         longitude: longitude.toFixed(2).replace(/\./g, "°") + "'"
       })
-      this.map(latitude, longitude);
+      this.mapAdd(latitude, longitude);
     }
   }
 
-  map = (latitude, longitude) => {
+  mapAdd = (latitude, longitude) => {
     console.log(latitude, longitude)
     window.mapboxgl.accessToken = 'pk.eyJ1Ijoia2F0ZXJpbmFmYWRlZXZhIiwiYSI6ImNraHhkZ2V5NjI1OXQyeGt6bGk3b241cWoifQ.ML5LvbW0F7LihFa_TMr5Gw';
     let map = new window.mapboxgl.Map({
