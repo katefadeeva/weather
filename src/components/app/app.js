@@ -1,43 +1,52 @@
-import React, { Component }from 'react';
+import React, {Component, Fragment} from 'react';
 import Weather from "../weather";
 import Map from "../map";
 import SwapiService from "../../services/swapi-service";
+import Spinner from "../spiner";
 
 export default class App extends Component {
+  swapiService = new SwapiService();
 
   state = {
-    swapiService: new SwapiService(),
     city: null,
     country: null,
     latitude: null,
     longitude: null,
-    lang: 'en'
+    lang: 'en',
+    loading: true,
+    error: false,
   }
 
   success = async (pos) => {
     const crd = pos.coords;
-    let data = await this.state.swapiService.getCity(crd.latitude, crd.longitude, this.state.lang);
-    // console.log(data);
-    let image = await this.state.swapiService.getImage(data.city);
+    let data = await this.swapiService.getCity(crd.latitude, crd.longitude, this.state.lang);
+    let image = await this.swapiService.getImage(data.city);
     const body = document.querySelector('body');
     body.style.backgroundImage = `url("${image.urls.full}")`;
     this.setState({
       city: data.city + ", ",
       country: data.country,
       latitude: crd.latitude,
-      longitude: crd.longitude
+      longitude: crd.longitude,
+      loading: false
     });
   }
 
   position = navigator.geolocation.getCurrentPosition(this.success);
 
   render() {
-    const { latitude, longitude, lang, city, country} = this.state;
+    const { loading, city, country, lang, latitude, longitude } = this.state;
+
+    const spinner = loading ? <Spinner /> : null;
+
     return (
-        <div className="wrapper">
-          <Weather city={city} country={country} lang={lang}/>
-          <Map latitude={latitude} longitude={longitude}/>
-        </div>
+        <Fragment>
+          <div className="wrapper">
+            {spinner}
+            <Weather city={city} country={country} lang={lang}/>
+            <Map latitude={latitude} longitude={longitude}/>
+          </div>
+        </Fragment>
     )
   }
 }

@@ -23,6 +23,7 @@ export default class Weather extends Component {
         country: country,
         lang: lang
       });
+      document.querySelector('.weather').style.display = 'block';
       this.weather(city);
     }
   }
