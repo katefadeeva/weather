@@ -1,6 +1,7 @@
 import React, { Component }from 'react';
 import SwapiService from "../../services/swapi-service";
 import Future from "../future";
+import moment from 'moment';
 
 export default class Weather extends Component {
   state = {
@@ -43,23 +44,13 @@ export default class Weather extends Component {
 
 
   render() {
-    const {city, country, weatherNow, feels_like, wind, humidity, sky} = this.state;
-    let date = new Date();
+    const {city, country, weatherNow, feels_like, wind, humidity, sky, lang} = this.state;
+    let date = moment().format('MMMM Do YYYY, h:mm');
 
-    const options = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      weekday: 'long',
-      hour: 'numeric',
-      minute: 'numeric'
-    };
-
-    let dateNow = this.lang === 'ru' ? date.toLocaleString("ru", options) : date.toLocaleString("en-US", options);
     return (
         <div className="weather">
           <h1 className="title">{city} {country}</h1>
-          <p className="date">{dateNow}</p>
+          <p className="date">{date}</p>
           <div className="weather__temp">
             <p>{weatherNow}</p>
             <ul>
@@ -69,7 +60,7 @@ export default class Weather extends Component {
               <li>Humidity: {humidity}</li>
             </ul>
           </div>
-          <Future />
+          <Future city={city} country={country} lang={lang}/>
         </div>
 
     )

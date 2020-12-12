@@ -1,0 +1,27 @@
+.future {
+  display: flex;
+}
+
+.future div {
+  margin-right: 50px;
+}
+
+.weekday {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 27px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.temp {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 80px;
+  line-height: 98px;
+  text-transform: uppercase;
+  margin: 0;
+}
